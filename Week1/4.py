@@ -34,15 +34,15 @@ heap_sort()
 biggest = array[quantity - 1]
 smallest = array[0]
 middle = array[int(float(len(array) / 2) - 0.5)]
-smalInd = -1
+smallInd = -1
 midInd = -1
 bigInd = -1
 file = open("output.txt", "w")
 for i in range(quantity):
-    if (copied[i] == biggest):
+    if copied[i] == biggest:
         bigInd = i
-    if (copied[i] == middle):
+    if copied[i] == middle:
         midInd = i
-    if (copied[i] == smallest):
-        smalInd = i
-file.write(str(smalInd + 1) + ' ' + str(midInd + 1) + ' ' + str(bigInd + 1))
+    if copied[i] == smallest:
+        smallInd = i
+file.write(str(smallInd + 1) + ' ' + str(midInd + 1) + ' ' + str(bigInd + 1))

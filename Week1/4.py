@@ -1,37 +1,38 @@
-def swap(i, j):
-    array[i], array[j] = array[j], array[i]
-
-
-def heapify(end, i):
-    l = 2 * i + 1
-    r = 2 * (i + 1)
-    max = i
-    if l < end and float(array[i]) < float(array[l]):
-        max = l
-    if r < end and float(array[max]) < float(array[r]):
-        max = r
-    if max != i:
-        swap(i, max)
-        heapify(end, max)
-
-
-def heap_sort():
-    end = len(array)
-    start = end // 2 - 1  # use // instead of /
-    for i in range(start, -1, -1):
-        heapify(end, i)
-    for i in range(end - 1, 0, -1):
-        swap(i, 0)
-        heapify(i, 0)
+def mergeSort(array):
+    if len(array) > 1:
+        middle = len(array) // 2
+        leftPart = array[:middle]
+        rightPart = array[middle:]
+        mergeSort(leftPart)
+        mergeSort(rightPart)
+        leftIndex = 0
+        rightIndex = 0
+        position = 0
+        while (leftIndex < len(leftPart) and rightIndex < len(rightPart)):
+            if (leftPart[leftIndex] < rightPart[rightIndex]):
+                array[position] = leftPart[leftIndex]
+                leftIndex += 1
+            else:
+                array[position] = rightPart[rightIndex]
+                rightIndex += 1
+            position += 1
+        while (leftIndex < len(leftPart)):
+            array[position] = leftPart[leftIndex]
+            position += 1
+            leftIndex += 1
+        while (rightIndex < len(rightPart)):
+            array[position] = rightPart[rightIndex]
+            position += 1
+            rightIndex += 1
 
 
 file = open("input.txt", "r")
 quantity = int(file.readline())
-array = file.readline().split()
+array = list(map(float, file.read().split()))
 copied = array.copy()
-n = 1
-heap_sort()
-biggest = array[quantity - 1]
+mergeSort(array)
+print(array)
+biggest = array[-1]
 smallest = array[0]
 middle = array[int(float(len(array) / 2) - 0.5)]
 smallInd = -1

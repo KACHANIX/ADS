@@ -3,17 +3,18 @@ def mergeSort(array):
         middle = len(array) // 2
         leftPart = array[:middle]
         rightPart = array[middle:]
-        inversion = mergeSort(leftPart) + mergeSort(rightPart)
+        inversion = mergeSort(leftPart) + mergeSort(rightPart) 
         leftIndex = 0
         rightIndex = 0
         position = 0
         leftLen = len(leftPart)
         rightLen = len(rightPart)
         while leftIndex < leftLen and rightIndex < rightLen:
-            if leftPart[leftIndex] < rightPart[rightIndex]:
+            if leftPart[leftIndex] <= rightPart[rightIndex]:
                 array[position] = leftPart[leftIndex]
                 leftIndex += 1
             else:
+                inversion += leftLen - leftIndex
                 array[position] = rightPart[rightIndex]
                 rightIndex += 1
             position += 1

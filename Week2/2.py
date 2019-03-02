@@ -3,7 +3,7 @@ def mergeSort(array):
         middle = len(array) // 2
         leftPart = array[:middle]
         rightPart = array[middle:]
-        inversion = mergeSort(leftPart) + mergeSort(rightPart) 
+        inversion = mergeSort(leftPart) + mergeSort(rightPart)
         leftIndex = 0
         rightIndex = 0
         position = 0

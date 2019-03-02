@@ -5,7 +5,6 @@ def mergeSort(array, leftBorder, rightBorder, file):
         rightPart = array[middle:]
         mergeSort(leftPart, leftBorder, leftBorder + middle - 1, file)
         mergeSort(rightPart, leftBorder + middle, rightBorder, file)
-
         leftIndex = 0
         rightIndex = 0
         position = 0
